@@ -20,6 +20,7 @@
 #include <cstddef>
 #include <map>
 #include <memory>
+#include <string>
 #include <stdexcept>
 #include <FlexLexer.h>
 
@@ -88,7 +89,7 @@ namespace n3 {
 			if (m_lookAhead == token)
 				m_lookAhead = nextToken();
 			else
-				throw ParseException("expected different symbol");
+			    throw ParseException("expected different symbol. expected: " + std::to_string(token) + " got: " + std::to_string(m_lookAhead));
 		}
 
 		void match()
